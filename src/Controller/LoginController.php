@@ -2,6 +2,7 @@
 // src/Controller/LuckyController.php
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,12 +18,25 @@ class LoginController extends AbstractController
         $message = "Logg dich ein!";
 
         if ($request->isMethod("POST")){
-            $user = $request->get("user");
-            $message = "Du bist eingeloggt ".$user["email"];
+            $user = "";
+            $userArray = $request->get("user");
+
+            $user = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->findOneBy(["email" => $userArray["email"]]);
+
+            /**
+             * @var User $user
+             */
+            if ($user && $user->getPassword() == md5($userArray["password"])){
+                $message = "Du bist eingeloggt ".$user->getEmail();
+            }
+            else{
+                $message = "Falsche Logindaten!";
+            }
         }
 
         return $this->render('login/login.html.twig', [
-            "request" => $request,
             "message" => $message
         ]);
     }
@@ -33,9 +47,17 @@ class LoginController extends AbstractController
     public function registerAction(Request $request)
     {
         if ($request->isMethod("POST")){
-            $user = $request->get("user");
+            $entityManager = $this->getDoctrine()->getManager();
+            $userArray = $request->get("user");
+            $user = new User();
+            $user->setEmail($userArray["email"]);
+            $user->setPassword(md5($userArray["password"]));
 
+            // tell Doctrine you want to (eventually) save the Product (no queries yet)
+            $entityManager->persist($user);
 
+            // actually executes the queries (i.e. the INSERT query)
+            $entityManager->flush();
         }
 
         return $this->render('login/register.html.twig', [
