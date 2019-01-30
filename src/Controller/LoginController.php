@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class LoginController extends AbstractController
 {
     /**
-    * @Route("/login", methods={"GET","POST"})
+    * @Route("/login", methods={"GET","POST"}, name="login")
     */
     public function loginAction(Request $request)
     {
@@ -42,7 +42,7 @@ class LoginController extends AbstractController
     }
 
     /**
-     * @Route("/login/register", methods={"GET","POST"})
+     * @Route("/login/register", methods={"GET","POST"}, name="register")
      */
     public function registerAction(Request $request)
     {
@@ -58,6 +58,8 @@ class LoginController extends AbstractController
 
             // actually executes the queries (i.e. the INSERT query)
             $entityManager->flush();
+
+            return $this->redirectToRoute('login');
         }
 
         return $this->render('login/register.html.twig', [
