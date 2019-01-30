@@ -1,11 +1,11 @@
-header {
+.welcome-area {
   background-image: url(../img/adventure-calm-clouds-414171.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   height: 800px;
   position: relative;
-  padding: 50px;
+  padding-top: 140px;
 
   .overlay {
     position: absolute;
@@ -16,15 +16,6 @@ header {
     background-color: rgba(#ffffff,0.3);
   }
 
-  .logo {
-    padding: 0 50px;
-
-    img {
-      width: 300px;
-      height: auto;
-    }
-  }
-
   h1 {
     text-transform: none;
     margin-bottom: 50px;
@@ -32,61 +23,6 @@ header {
 
   h3 {
     margin-bottom: 15px;
-  }
-
-  .search {
-
-    img {
-      height: 25px;
-      width: auto;
-    }
-
-    input {
-      font-family: 'Lato', Arial, sans-serif;
-      font-weight: 400;
-      color: rgba(#22262a,0.3);
-      font-size: 18px;
-    }
-
-    .form-control {
-      border: none;
-      border-radius: 4px;
-      transition: none;
-      width: 600px;
-      height: auto;
-      padding: 0.5rem 1rem;
-
-      &::placeholder {
-        font-family: 'Lato', Arial, sans-serif;
-        font-weight: 400;
-        color: rgba(#22262a,0.3);
-        font-size: 18px;
-      }
-
-      &:focus {
-        box-shadow: none;
-        outline: 0;
-      }
-    }
-    .input-group-append {
-      margin-left: -5px;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 4px;
-      background-color: white;
-
-      &:focus {
-        box-shadow: none;
-        outline: 0;
-        background-color: rgb(183, 183, 183);
-      }
-
-      &:hover {
-        background-color: rgb(183, 183, 183);
-      }
-    }
   }
 }
 
@@ -152,57 +88,4 @@ footer {
   }
 }
 
-.centered-box {
-  max-width: 560px;
-  margin: 100px auto;
-  border: 1px solid rgba(#3b3b3b,0.3);
-  border-radius: 3px;
-  background: #fff;
-
-  .centered-box-content {
-    padding: 40px;
-  }
-
-  .form-group {
-    margin-bottom: 30px;
-  }
-
-  .form-label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #3b3b3b;
-    font-weight: 700;
-  }
-
-  input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 3px;
-    border: 1px solid rgba(#3b3b3b,0.3);
-  }
-
-  .btn-primary {
-    background-color: #05a081;
-    border-color: #036f59;
-
-    &:active {
-      color: #fff;
-      background-color: #05a081;
-      border-color: #036f59;
-    }
-    &:not(:disabled):not(.disabled):active {
-      color: #fff;
-      background-color: #05a081;
-      border-color: #036f59;
-      box-shadow: none;
-    }
-    &:focus {
-      color: #fff;
-      background-color: #05a081;
-      border-color: #036f59;
-      box-shadow: none;
-    }
-  }
-}
 

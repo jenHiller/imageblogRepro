@@ -15,7 +15,7 @@ class LoginController extends AbstractController
     */
     public function loginAction(Request $request)
     {
-        $message = "Logg dich ein!";
+        $message = "Login";
 
         if ($request->isMethod("POST")){
             $user = "";
@@ -29,7 +29,7 @@ class LoginController extends AbstractController
              * @var User $user
              */
             if ($user && $user->getPassword() == md5($userArray["password"])){
-                $message = "Du bist eingeloggt ".$user->getEmail();
+                return $this->redirectToRoute('account');
             }
             else{
                 $message = "Falsche Logindaten!";
@@ -46,6 +46,8 @@ class LoginController extends AbstractController
      */
     public function registerAction(Request $request)
     {
+        $message = "Registrieren";
+
         if ($request->isMethod("POST")){
             $entityManager = $this->getDoctrine()->getManager();
             $userArray = $request->get("user");
@@ -63,7 +65,7 @@ class LoginController extends AbstractController
         }
 
         return $this->render('login/register.html.twig', [
-            "request" => $request
+            "message" => $message
         ]);
     }
 

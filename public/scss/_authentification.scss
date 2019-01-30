@@ -1,0 +1,63 @@
+.authentification-headline {
+  max-width: 560px;
+  padding-top: 200px;
+
+  h3 {
+    text-transform: none;
+    text-align: center;
+  }
+}
+
+.centered-box {
+  max-width: 560px;
+  border: 1px solid rgba(#3b3b3b,0.3);
+  border-radius: 3px;
+  background: #fff;
+
+  .centered-box-content {
+    padding: 40px;
+  }
+
+  .form-group {
+    margin-bottom: 30px;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #3b3b3b;
+    font-weight: 700;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(#3b3b3b,0.3);
+  }
+
+  .btn-primary {
+    background-color: #05a081;
+    border-color: #036f59;
+    cursor: pointer;
+
+    &:active {
+      color: #fff;
+      background-color: #05a081;
+      border-color: #036f59;
+    }
+    &:not(:disabled):not(.disabled):active {
+      color: #fff;
+      background-color: #05a081;
+      border-color: #036f59;
+      box-shadow: none;
+    }
+    &:focus {
+      color: #fff;
+      background-color: #05a081;
+      border-color: #036f59;
+      box-shadow: none;
+    }
+  }
+}

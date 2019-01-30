@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}imageUniverse - Registrieren{% endblock %}
+
 {% block body %}
+    <div class="container authentification-headline">
+        <div class="row">
+            <div class="col-12">
+                <h3>{{ message }}</h3>
+            </div>
+        </div>
+    </div>
     <div class="container centered-box">
         <div class="centered-box-content">
             <form class="form" id="new_user" method="post">
@@ -20,6 +29,5 @@
             </form>
         </div>
     </div>
-    {{ dump(request) }}
 
 {% endblock %}

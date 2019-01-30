@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{% block title %}imageUniverse - Blog{% endblock %}</title>
+        <title>{% block title %}imageUniverse - Home{% endblock %}</title>
 
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -11,39 +11,38 @@
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% block stylesheets %}{% endblock %}
-        <link rel="shortcut icon" href="img/favicon.png" type="image/png" />
-        <link rel="icon" href="img/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/png" />
+        <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/png" />
     </head>
-    <body class="mainpage">
+    <body>
 
-    <div class="burger-navigation">
-        <img src="{{ asset('img/burgerbutton.png') }}">
-    </div>
+    <header class="main-navigation">
+        <div class="logo">
+            <a href="/">
+                <img class="img-fluid" src="{{ asset('img/logo.png') }}">
+            </a>
+        </div>
 
-    <div class="navi-overlay">
-        <div class="close-area"></div>
-        <div class="navi">
-            <div class="close">
-                <img src="{{ asset('img/closebutton.png') }}">
-            </div>
-            <div class="list">
-                <ul>
-                    <li><a href="/login/register">Registrieren</a></li>
-                    <li><a href="/login">Login</a></li>
-                </ul>
+        <div class="burger-navigation">
+            <img src="{{ asset('img/burgerbutton.png') }}">
+        </div>
+
+        <div class="navi-overlay">
+            <div class="close-area"></div>
+            <div class="navi">
+                <div class="close">
+                    <img src="{{ asset('img/closebutton.png') }}">
+                </div>
+                <div class="list">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/login/register">Registrieren</a></li>
+                        <li><a href="/login">Login</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
-    <header class="container-fluid">
-        <div class="overlay"></div>
-        <div class="row">
-            <div class="col-12 logo">
-                <a href="/">
-                    <img class="img-fluid" src="{{ asset('img/logo.png') }}">
-                </a>
-            </div>
-        </div>
     </header>
 
     {% block body %}{% endblock %}
@@ -63,11 +62,11 @@
                     <div class="col-12 col-md-3 d-flex justify-content-center">
                         <div>
                             <div class="numbers d-flex align-items-center">
-                                <img class="icon" src="img/phone.svg">
+                                <img class="icon" src="{{ asset('img/phone.svg') }}">
                                 <a href="tel:00496221492110">+49 (0) 6221 49211 0</a>
                             </div>
                             <div class="numbers d-flex align-items-center">
-                                <img class="icon" src="img/mail.svg">
+                                <img class="icon" src="{{ asset('img/mail.svg') }}">
                                 <a href="mailto:info@myvisuals.de">info@image-universe.de</a>
                             </div>
                         </div>
@@ -79,7 +78,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-3 d-flex align-items-center">
-                        <img class="img-fluid" src="img/logo_white.png">
+                        <img class="img-fluid" src="{{ asset('img/logo_white.png') }}">
                     </div>
                 </div>
             </div>

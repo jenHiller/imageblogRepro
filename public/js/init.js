@@ -8,7 +8,19 @@ $(document).ready(function () {
         $('.navi-overlay').hide();
     });
 
-    //Slider-Zeit anpassen
+    // fixed Navigation
+    $(window).scroll(function(){
+        var scrollTop = $(window).scrollTop();
+
+        if ( scrollTop > 1 ) {
+            $('.main-navigation').addClass("fixed-top");
+        }
+        else{
+            $('.main-navigation').removeClass("fixed-top");
+        }
+    });
+
+    // Slider-Zeit anpassen
     $('.carousel').carousel({
         interval: 5000
     });
