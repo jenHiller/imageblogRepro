@@ -1,0 +1,68 @@
+.image-with-parallax {
+  margin-top: 45px;
+
+  @include media-breakpoint-up(sm){
+    margin-top: 50px;
+  }
+  @include media-breakpoint-up(md){
+    margin-top: 60px;
+  }
+  @include media-breakpoint-up(lg){
+    margin-top: 75px;
+  }
+  @include media-breakpoint-up(xl){
+    margin-top: 95px;
+  }
+
+  .parallax-container {
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+
+    @include media-breakpoint-up(sm){
+      height: 300px;
+    }
+    @include media-breakpoint-up(md){
+      height: 380px;
+    }
+    @include media-breakpoint-up(lg){
+      height: 450px;
+    }
+    @include media-breakpoint-up(xl){
+      height: 600px;
+    }
+  }
+
+  .parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 600px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: translate3d(-50%, 50px, 0px);
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+
+    @include media-breakpoint-up(sm){
+      transform: translate3d(-50%, 100px, 0px);
+    }
+    @include media-breakpoint-up(md){
+      transform: translate3d(-50%, 200px, 0px);
+    }
+    @include media-breakpoint-up(lg){
+      transform: translate3d(-50%, 250px, 0px);
+    }
+    @include media-breakpoint-up(xl){
+      transform: translate3d(-50%, 300px, 0px);
+    }
+  }
+}

@@ -1,12 +1,96 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}imageUniverse - Blog{% endblock %}</title>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon" href="img/favicon.png" type="image/png" />
+        <link rel="icon" href="img/favicon.png" type="image/png" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <body class="mainpage">
+
+    <div class="burger-navigation">
+        <img src="{{ asset('img/burgerbutton.png') }}">
+    </div>
+
+    <div class="navi-overlay">
+        <div class="close-area"></div>
+        <div class="navi">
+            <div class="close">
+                <img src="{{ asset('img/closebutton.png') }}">
+            </div>
+            <div class="list">
+                <ul>
+                    <li><a href="/login/register">Registrieren</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <header class="container-fluid">
+        <div class="overlay"></div>
+        <div class="row">
+            <div class="col-12 logo">
+                <a href="/">
+                    <img class="img-fluid" src="{{ asset('img/logo.png') }}">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    {% block body %}{% endblock %}
+
+    <footer>
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        <h4>Kontakt</h4>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-3 d-flex justify-content-center">
+                        <p>imageUniverse GmbH<br>Kurfürsten-Anlage 48<br>69115 Heidelberg</p>
+                    </div>
+                    <div class="col-12 col-md-3 d-flex justify-content-center">
+                        <div>
+                            <div class="numbers d-flex align-items-center">
+                                <img class="icon" src="img/phone.svg">
+                                <a href="tel:00496221492110">+49 (0) 6221 49211 0</a>
+                            </div>
+                            <div class="numbers d-flex align-items-center">
+                                <img class="icon" src="img/mail.svg">
+                                <a href="mailto:info@myvisuals.de">info@image-universe.de</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 d-flex justify-content-center">
+                        <div>
+                            <a href="#">Datenschutz</a><br>
+                            <a href="#">Impressum</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 d-flex align-items-center">
+                        <img class="img-fluid" src="img/logo_white.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/init.js') }}"></script>
+    <script src="{{ asset('js/parallax.js') }}"></script>
+    {% block javascripts %}{% endblock %}
     </body>
 </html>

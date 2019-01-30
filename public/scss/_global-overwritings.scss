@@ -1,0 +1,60 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Lato', Arial, sans-serif;
+  font-weight: 400;
+  display: block;
+  padding-bottom: 230px;
+
+  &.mainpage {
+    background-color: #3b3b3b;
+  }
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #22262a;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h4 {
+  font-size: 25px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+p {
+  color: #3b3b3b;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #3b3b3b;
+  font-size: 20px;
+  margin-bottom: 20px;
+
+  &:hover {
+    color: #3b3b3b;
+    text-decoration: none;
+  }
+}
