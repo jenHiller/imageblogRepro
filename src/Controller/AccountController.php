@@ -1,5 +1,5 @@
 <?php
-// src/Controller/LuckyController.php
+// src/Controller/DefaultController.php
 namespace App\Controller;
 
 use App\Entity\User;
@@ -19,6 +19,20 @@ class AccountController extends AbstractController
 
         return $this->render('login/account.html.twig', [
             "message" => $message
+        ]);
+    }
+
+    public function updateAction(Request $request)
+    {
+        return $this->render('login/update.html.twig', [
+
+        ]);
+    }
+
+    public function logoutAction(Request $request)
+    {
+        return $this->render('default/default.html.twig', [
+
         ]);
     }
 }

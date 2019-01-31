@@ -15,7 +15,7 @@ class LoginController extends AbstractController
     */
     public function loginAction(Request $request)
     {
-        $message = "Login";
+        $message = "Bitte gebe Deine Login-Daten ein.";
 
         if ($request->isMethod("POST")){
             $user = "";
@@ -46,22 +46,34 @@ class LoginController extends AbstractController
      */
     public function registerAction(Request $request)
     {
-        $message = "Registrieren";
+        $message = "Hier kannst Du Dich registrieren. Danach wirst Du direkt zum Login weitergeleitet.";
 
         if ($request->isMethod("POST")){
+            // Step 1: Schauen ob der User schon vorhanden ist
             $entityManager = $this->getDoctrine()->getManager();
             $userArray = $request->get("user");
-            $user = new User();
-            $user->setEmail($userArray["email"]);
-            $user->setPassword(md5($userArray["password"]));
 
-            // tell Doctrine you want to (eventually) save the Product (no queries yet)
-            $entityManager->persist($user);
+            $duplicate_acc = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->findOneBy(["email" => $userArray["email"]]);
 
-            // actually executes the queries (i.e. the INSERT query)
-            $entityManager->flush();
+            if ($duplicate_acc) {
+                $message = "Account existiert bereits.";
+            }
+            else{
+                // Step 2: Falls user nicht vorhanden ist ihn anlegen
+                $user = new User();
+                $user->setEmail($userArray["email"]);
+                $user->setPassword(md5($userArray["password"]));
 
-            return $this->redirectToRoute('login');
+                // tell Doctrine you want to (eventually) save the Product (no queries yet)
+                $entityManager->persist($user);
+
+                // actually executes the queries (i.e. the INSERT query)
+                $entityManager->flush();
+
+                return $this->redirectToRoute('login');
+            }
         }
 
         return $this->render('login/register.html.twig', [
