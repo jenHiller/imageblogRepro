@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class AccountController extends AbstractController
+class AccountController extends BaseController
 {
     /**
     * @Route("/account", methods={"GET","POST"}, name="account")

@@ -1,44 +1,28 @@
 <?php
-// src/Controller/LuckyController.php
+
 namespace App\Controller;
 
+use App\DataFixtures\UserFixtures;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class LoginController extends AbstractController
+class SecurityController extends AbstractController
 {
     /**
-    * @Route("/login", methods={"GET","POST"}, name="login")
-    */
-    public function loginAction(Request $request)
+     * @Route("/login", name="app_login")
+     */
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $message = "Bitte gebe Deine Login-Daten ein.";
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
 
-        if ($request->isMethod("POST")){
-            $user = "";
-            $userArray = $request->get("user");
-
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->findOneBy(["email" => $userArray["email"]]);
-
-            /**
-             * @var User $user
-             */
-            if ($user && $user->getPassword() == md5($userArray["password"])){
-                return $this->redirectToRoute('account');
-            }
-            else{
-                $message = "Falsche Logindaten!";
-            }
-        }
-
-        return $this->render('login/login.html.twig', [
-            "message" => $message
-        ]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
     /**
@@ -64,7 +48,9 @@ class LoginController extends AbstractController
                 // Step 2: Falls user nicht vorhanden ist ihn anlegen
                 $user = new User();
                 $user->setEmail($userArray["email"]);
-                $user->setPassword(md5($userArray["password"]));
+                $user->setPassword( $userArray["password"]);
+
+
 
                 // tell Doctrine you want to (eventually) save the Product (no queries yet)
                 $entityManager->persist($user);
@@ -81,17 +67,10 @@ class LoginController extends AbstractController
         ]);
     }
 
-    public function updateAction(Request $request)
-    {
-        return $this->render('login/update.html.twig', [
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout(){
 
-        ]);
-    }
-
-    public function logoutAction(Request $request)
-    {
-        return $this->render('login/logout.html.twig', [
-
-        ]);
     }
 }

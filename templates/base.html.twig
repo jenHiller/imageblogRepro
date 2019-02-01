@@ -36,9 +36,12 @@
                 <div class="list">
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li><a href="/login/register">Registrieren</a></li>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/">Logout</a></li>
+                        {% if app.user %}
+                            <li><a href="{{ path('logout') }}">Logout</a></li>
+                        {% else %}
+                            <li><a href="/login/register">Registrieren</a></li>
+                            <li><a href="/login">Login</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
