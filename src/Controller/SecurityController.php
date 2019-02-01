@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
@@ -28,7 +29,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login/register", methods={"GET","POST"}, name="register")
      */
-    public function registerAction(Request $request)
+    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $message = "Hier kannst Du Dich registrieren. Danach wirst Du direkt zum Login weitergeleitet.";
 
@@ -48,9 +49,10 @@ class SecurityController extends AbstractController
                 // Step 2: Falls user nicht vorhanden ist ihn anlegen
                 $user = new User();
                 $user->setEmail($userArray["email"]);
-                $user->setPassword( $userArray["password"]);
-
-
+                $user->setPassword( $passwordEncoder->encodePassword(
+                    $user,
+                    $userArray["password"]
+                ));
 
                 // tell Doctrine you want to (eventually) save the Product (no queries yet)
                 $entityManager->persist($user);
@@ -58,7 +60,7 @@ class SecurityController extends AbstractController
                 // actually executes the queries (i.e. the INSERT query)
                 $entityManager->flush();
 
-                return $this->redirectToRoute('login');
+                return $this->redirectToRoute('app_login');
             }
         }
 
