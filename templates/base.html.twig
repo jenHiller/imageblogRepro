@@ -35,11 +35,11 @@
                 </div>
                 <div class="list">
                     <ul>
-                        <li><a href="/">Home</a></li>
+                        <li><a href="/"><span><i class="fas fa-home"></i></span>Home</a></li>
                         {% if app.user %}
-                            <li><a href="{{ path('logout') }}">Logout</a></li>
                             <li><a href="{{ path('blog') }}">Blog</a></li>
                             <li><a href="{{ path('blog-my-images') }}">Meine Bilder</a></li>
+                            <li><a href="{{ path('logout') }}"><span><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
                         {% else %}
                             <li><a href="/login/register">Registrieren</a></li>
                             <li><a href="/login">Login</a></li>

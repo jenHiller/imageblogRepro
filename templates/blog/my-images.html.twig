@@ -2,31 +2,32 @@
 
 {% block body %}
     <div class="container my-images">
-        <h2>Meine Bilder:</h2>
+        <h2>Meine Bilder</h2>
         <div class="row">
             {% for image in images %}
-                <div class="col-md-6">
-                    <div class="icons">
-                        <a class="image-edit" href="{{ path('image-edit', {'id': image.id}) }}">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" class="show-image-delete-modal" data-imageid="{{ image.id }}">
-                            <i class="far fa-trash-alt"></i>
-                        </a>
-                    </div>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <div class="image-placeholder">
+                        <div class="icons">
+                            <a class="image-edit" href="{{ path('image-edit', {'id': image.id}) }}">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="#" class="show-image-delete-modal" data-imageid="{{ image.id }}">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </div>
 
-                    <img src="/{{ image.path }}" class="img-fluid">
+                        <img src="/{{ image.path }}" class="img-fluid">
+                    </div>
                 </div>
             {% endfor %}
         </div>
-        <h2>Bild hochladen</h2>
+        <h4>Ein weiteres Bild hochladen</h4>
         <form class="form" id="new_image" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label class="form-label" for="image">Bild</label>
                 <input required="required" class="form-control-file" type="file" name="image" id="image">
             </div>
             <div class="form-group">
-                <input type="submit" value="Hochladen" class="btn-primary form-input">
+                <input type="submit" value="Hochladen" class="btn btn-primary form-input">
             </div>
         </form>
     </div>

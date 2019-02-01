@@ -2,21 +2,25 @@
 
 {% block body %}
     <div class="container my-images">
-        <h2>Altes Bild:</h2>
+        <h2>Aktuelles Bild</h2>
         <div class="row">
-            <div class="col-md-6">
-                <img src="/{{ image.path }}" class="img-fluid">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="image-placeholder">
+                    <img src="/{{ image.path }}" class="img-fluid">
+                </div>
             </div>
         </div>
-        <h2>Anderes Bild hochladen:</h2>
+        <div class="textbox">
+            <h4>Ersetzte das aktuelle Bild durch das Hochladen eines neuen Bildes.</h4>
+        </div>
         <form class="form" id="new_image" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label class="form-label" for="image">Bild</label>
                 <input required="required" class="form-control-file" type="file" name="image" id="image">
             </div>
             <div class="form-group">
-                <input type="submit" value="Hochladen" class="btn-primary form-input">
+                <input type="submit" value="Hochladen" class="btn btn-primary form-input">
             </div>
         </form>
+        <a class="nav-link" href="{{ path('blog-my-images') }}"><span><i class="fas fa-arrow-left"></i></span>Zurück</a>
     </div>
 {% endblock %}
