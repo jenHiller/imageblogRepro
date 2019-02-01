@@ -45,7 +45,7 @@ $(document).ready(function () {
             url: "/blog/my-images/delete",
             data: { id : imageId },
             method: "POST"
-        }).done(function(message) {
+        }).done(function() {
             location.reload();
         });
 

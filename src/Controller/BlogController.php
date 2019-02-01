@@ -93,21 +93,24 @@ class BlogController extends BaseController
              * @var User $user
              */
             $user = $this->getUser();
-            $imageFile = $request->files->get("image");
 
-            // altes Bild löschen
-            $this->deleteImage($image->getPath());
+            if ($image && $image->getUser() == $user->getId()) {
+                $imageFile = $request->files->get("image");
 
-            // neues Bild hochladen
-            $path = $this->uploadImageAndGetPath($user, $imageFile);
-            $image->setPath($path);
+                // altes Bild löschen
+                $this->deleteImage($image->getPath());
 
-            $entityManager = $this->getDoctrine()->getManager();
-            // tell Doctrine you want to (eventually) save the Product (no queries yet)
-            $entityManager->persist($image);
+                // neues Bild hochladen
+                $path = $this->uploadImageAndGetPath($user, $imageFile);
+                $image->setPath($path);
 
-            // actually executes the queries (i.e. the INSERT query)
-            $entityManager->flush();
+                $entityManager = $this->getDoctrine()->getManager();
+                // tell Doctrine you want to (eventually) save the Product (no queries yet)
+                $entityManager->persist($image);
+
+                // actually executes the queries (i.e. the INSERT query)
+                $entityManager->flush();
+            }
         }
 
         return $this->render('blog/image-edit.html.twig', [
@@ -122,13 +125,14 @@ class BlogController extends BaseController
      */
     public function imageDeleteAction(Request $request)
     {
+        $user = $this->getUser();
         $id = $request->get('id');
 
         $image = $this->getDoctrine()
             ->getRepository(Images::class)
             ->findOneBy(["id" => $id]);
 
-        if ($image){
+        if ($image && $image->getUser() == $user->getId()) {
             $this->deleteImage($image->getPath());
 
             $entityManager = $this->getDoctrine()->getManager();
