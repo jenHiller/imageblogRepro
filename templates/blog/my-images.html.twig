@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container my-images">
+        <h2>Meine Bilder:</h2>
+        <div class="row">
+            {% for image in images %}
+                <div class="col-md-6">
+                    <div class="icons">
+                        <a class="image-edit" href="{{ path('image-edit', {'id': image.id}) }}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="#" class="show-image-delete-modal" data-imageid="{{ image.id }}">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </div>
+
+                    <img src="/{{ image.path }}" class="img-fluid">
+                </div>
+            {% endfor %}
+        </div>
+        <h2>Bild hochladen</h2>
+        <form class="form" id="new_image" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="form-label" for="image">Bild</label>
+                <input required="required" class="form-control-file" type="file" name="image" id="image">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Hochladen" class="btn-primary form-input">
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Wirklich?</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Willst du dieses Bild wirklich löschen? :-O
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-danger image-delete">Löschen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

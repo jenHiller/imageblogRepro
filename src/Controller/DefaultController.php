@@ -11,9 +11,9 @@ class DefaultController extends BaseController
     /**
     * @Route("/", name="home")
     */
-    public function defaultAction()
+    public function homeAction()
     {
-        return $this->render('default/default.html.twig', [
+        return $this->render('default/home.html.twig', [
 
         ]);
     }

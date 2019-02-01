@@ -1,0 +1,23 @@
+.my-images{
+  >.row{
+    >div{
+      position: relative;
+
+      .icons{
+        position: absolute;
+        top: 5px;
+        right: 20px;
+        padding: 10px;
+        background-color: #fff;
+
+        a{
+          margin-right: 10px;
+
+          &:last-child{
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}

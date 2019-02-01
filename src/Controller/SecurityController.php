@@ -64,7 +64,7 @@ class SecurityController extends AbstractController
             }
         }
 
-        return $this->render('login/register.html.twig', [
+        return $this->render('security/register.html.twig', [
             "message" => $message
         ]);
     }

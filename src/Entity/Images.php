@@ -26,6 +26,11 @@ class Images
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $userEmail;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +56,18 @@ class Images
     public function setUser(int $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getUserEmail(): ?string
+    {
+        return $this->userEmail;
+    }
+
+    public function setUserEmail(string $userEmail): self
+    {
+        $this->userEmail = $userEmail;
 
         return $this;
     }

@@ -29,4 +29,26 @@ $(document).ready(function () {
     $('.parallax').parallax();
 
 
+    // Delete Image
+    $('.show-image-delete-modal').on('click', function () {
+        var imageId = $(this).data('imageid');
+        $('#deleteModal').modal('show');
+        $('#deleteModal').data('imageid', imageId);
+
+        return false;
+    });
+
+    $('.image-delete').on('click', function () {
+        var imageId = $('#deleteModal').data('imageid');
+
+        $.ajax({
+            url: "/blog/my-images/delete",
+            data: { id : imageId },
+            method: "POST"
+        }).done(function(message) {
+            location.reload();
+        });
+
+        return false;
+    });
 });
