@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Erstellungszeit: 03. Feb 2019 um 17:53
+-- Erstellungszeit: 03. Feb 2019 um 18:11
 -- Server-Version: 10.2.15-MariaDB-log
 -- PHP-Version: 7.0.21
 
@@ -45,7 +45,9 @@ INSERT INTO `images` (`id`, `path`, `user`, `user_email`) VALUES
 (79, 'blog-images/36/1549216061.jpeg', 36, 'beispiel@user.de'),
 (80, 'blog-images/36/1549216070.jpeg', 36, 'beispiel@user.de'),
 (81, 'blog-images/36/1549216125.jpeg', 36, 'beispiel@user.de'),
-(82, 'blog-images/36/1549216139.jpeg', 36, 'beispiel@user.de');
+(82, 'blog-images/36/1549216139.jpeg', 36, 'beispiel@user.de'),
+(83, 'blog-images/37/1549217329.jpeg', 37, 'beispiel2@user.de'),
+(84, 'blog-images/37/1549217345.jpeg', 37, 'beispiel2@user.de');
 
 -- --------------------------------------------------------
 
@@ -84,7 +86,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
-(36, 'beispiel@user.de', '[]', '$2y$13$8FnwOtNtduXPn.I/fn2G8ePYpna7bZzTuUHF2mE6Z/5X14.ZIK.du');
+(36, 'beispiel@user.de', '[]', '$2y$13$8FnwOtNtduXPn.I/fn2G8ePYpna7bZzTuUHF2mE6Z/5X14.ZIK.du'),
+(37, 'beispiel2@user.de', '[]', '$2y$13$PNwHdKsSuBixFKRFQBqeHe7.pATlAsKEjjoor7qHhFmt2KPrQfLIC');
 
 --
 -- Indizes der exportierten Tabellen
@@ -117,13 +120,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
