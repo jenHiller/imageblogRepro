@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\DataFixtures\UserFixtures;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,10 +53,7 @@ class SecurityController extends AbstractController
                     $userArray["password"]
                 ));
 
-                // tell Doctrine you want to (eventually) save the Product (no queries yet)
                 $entityManager->persist($user);
-
-                // actually executes the queries (i.e. the INSERT query)
                 $entityManager->flush();
 
                 return $this->redirectToRoute('app_login');

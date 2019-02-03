@@ -46,7 +46,7 @@ $(document).ready(function () {
             data: { id : imageId },
             method: "POST"
         }).done(function() {
-            location.reload();
+            location.href = location.href;
         });
 
         return false;

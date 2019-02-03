@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Images;
 use App\Entity\User;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,10 +53,7 @@ class BlogController extends BaseController
             $image->setUserEmail($user->getEmail());
 
             $entityManager = $this->getDoctrine()->getManager();
-            // tell Doctrine you want to (eventually) save the Product (no queries yet)
             $entityManager->persist($image);
-
-            // actually executes the queries (i.e. the INSERT query)
             $entityManager->flush();
         }
 
