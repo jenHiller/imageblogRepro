@@ -36,16 +36,9 @@ class BlogController extends BaseController
              * @var User $user
              */
             $user = $this->getUser();
-            $now = time();
             $imageFile = $request->files->get("image");
-            $userPath = "blog-images/{$user->getId()}";
-            $fileName = "$now.{$imageFile->guessExtension()}";
-            $path = $userPath."/".$fileName;
 
-            if (!file_exists($userPath)) {
-                mkdir($userPath, 0777, true);
-            }
-            file_put_contents($path, file_get_contents($imageFile));
+            $path = $this->uploadImageAndGetPath($user, $imageFile);
 
             $image = new Images();
             $image->setPath($path);
